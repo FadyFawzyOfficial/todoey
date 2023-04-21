@@ -72,6 +72,7 @@ class TasksScreen extends StatelessWidget {
         onPressed: () => showModalBottomSheet(
           context: context,
           builder: (context) => const AddTaskBottomSheet(),
+          isScrollControlled: true,
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadiusDirectional.only(
               topStart: Radius.circular(24),
