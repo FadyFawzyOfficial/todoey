@@ -1,10 +1,22 @@
 import 'package:flutter/material.dart';
 
+import '../models/task.dart';
 import '../widgets/add_task_bottom_sheet.dart';
 import '../widgets/tasks_list.dart';
 
-class TasksScreen extends StatelessWidget {
+class TasksScreen extends StatefulWidget {
   const TasksScreen({super.key});
+
+  @override
+  State<TasksScreen> createState() => _TasksScreenState();
+}
+
+class _TasksScreenState extends State<TasksScreen> {
+  List<Task> tasks = [
+    Task(title: 'Buy milk'),
+    Task(title: 'Buy eggs'),
+    Task(title: 'Buy bread'),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +73,7 @@ class TasksScreen extends StatelessWidget {
                   topEnd: Radius.circular(24),
                 ),
               ),
-              child: const TasksList(),
+              child: TasksList(tasks: tasks),
             ),
           ),
         ],
