@@ -83,7 +83,7 @@ class _TasksScreenState extends State<TasksScreen> {
         child: const Icon(Icons.add),
         onPressed: () => showModalBottomSheet(
           context: context,
-          builder: (context) => const AddTaskBottomSheet(),
+          builder: (context) => AddTaskBottomSheet(addTask: addNewTask),
           isScrollControlled: true,
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadiusDirectional.only(
@@ -94,5 +94,10 @@ class _TasksScreenState extends State<TasksScreen> {
         ),
       ),
     );
+  }
+
+  void addNewTask(String taskTitle) {
+    setState(() => tasks.add(Task(title: taskTitle)));
+    Navigator.pop(context);
   }
 }

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
 class AddTaskBottomSheet extends StatelessWidget {
-  const AddTaskBottomSheet({super.key});
+  final ValueChanged<String> addTask;
+  final _controller = TextEditingController();
+
+  AddTaskBottomSheet({super.key, required this.addTask});
 
   @override
   Widget build(BuildContext context) {
@@ -24,15 +27,16 @@ class AddTaskBottomSheet extends StatelessWidget {
                 fontSize: 32,
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.symmetric(vertical: 16),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 16),
               child: TextField(
+                controller: _controller,
                 autofocus: true,
                 textAlign: TextAlign.center,
               ),
             ),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () => addTask(_controller.text),
               style: ElevatedButton.styleFrom(
                 textStyle: const TextStyle(fontSize: 18),
                 padding: const EdgeInsetsDirectional.all(16),
