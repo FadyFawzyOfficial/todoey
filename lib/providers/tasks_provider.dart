@@ -19,4 +19,9 @@ class TasksProvider extends ChangeNotifier {
     _tasks.add(Task(title: taskTitle));
     notifyListeners();
   }
+
+  void toggleTaskState({required Task task}) {
+    task.toggleDone();
+    notifyListeners();
+  }
 }
