@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../providers/tasks_provider.dart';
 
 class AddTaskBottomSheet extends StatelessWidget {
-  final ValueChanged<String> addTask;
   final _controller = TextEditingController();
 
-  AddTaskBottomSheet({super.key, required this.addTask});
+  AddTaskBottomSheet({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +38,10 @@ class AddTaskBottomSheet extends StatelessWidget {
               ),
             ),
             ElevatedButton(
-              onPressed: () => addTask(_controller.text),
+              onPressed: () {
+                context.read<TasksProvider>().addTask(_controller.text);
+                Navigator.pop(context);
+              },
               style: ElevatedButton.styleFrom(
                 textStyle: const TextStyle(fontSize: 18),
                 padding: const EdgeInsetsDirectional.all(16),

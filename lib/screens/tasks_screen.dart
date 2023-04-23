@@ -73,7 +73,7 @@ class TasksScreen extends StatelessWidget {
         child: const Icon(Icons.add),
         onPressed: () => showModalBottomSheet(
           context: context,
-          builder: (context) => AddTaskBottomSheet(addTask: addNewTask),
+          builder: (context) => AddTaskBottomSheet(),
           isScrollControlled: true,
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadiusDirectional.only(
@@ -84,10 +84,5 @@ class TasksScreen extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  void addNewTask(String taskTitle) {
-    // setState(() => tasks.add(Task(title: taskTitle)));
-    // Navigator.pop(context);
   }
 }
