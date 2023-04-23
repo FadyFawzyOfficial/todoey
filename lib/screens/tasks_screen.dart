@@ -1,22 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-import '../models/task.dart';
+import '../providers/tasks_provider.dart';
 import '../widgets/add_task_bottom_sheet.dart';
 import '../widgets/tasks_list.dart';
 
-class TasksScreen extends StatefulWidget {
+class TasksScreen extends StatelessWidget {
   const TasksScreen({super.key});
-
-  @override
-  State<TasksScreen> createState() => _TasksScreenState();
-}
-
-class _TasksScreenState extends State<TasksScreen> {
-  List<Task> tasks = [
-    Task(title: 'Buy milk'),
-    Task(title: 'Buy eggs'),
-    Task(title: 'Buy bread'),
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +44,7 @@ class _TasksScreenState extends State<TasksScreen> {
                   ),
                 ),
                 Text(
-                  '${tasks.length} Tasks',
+                  '${context.watch<TasksProvider>().tasks.length} Tasks',
                   style: const TextStyle(
                     color: Colors.white,
                     fontSize: 16,
@@ -73,7 +63,7 @@ class _TasksScreenState extends State<TasksScreen> {
                   topEnd: Radius.circular(24),
                 ),
               ),
-              child: TasksList(tasks: tasks),
+              child: const TasksList(),
             ),
           ),
         ],
@@ -97,7 +87,7 @@ class _TasksScreenState extends State<TasksScreen> {
   }
 
   void addNewTask(String taskTitle) {
-    setState(() => tasks.add(Task(title: taskTitle)));
-    Navigator.pop(context);
+    // setState(() => tasks.add(Task(title: taskTitle)));
+    // Navigator.pop(context);
   }
 }
