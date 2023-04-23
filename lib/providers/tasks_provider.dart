@@ -20,6 +20,11 @@ class TasksProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  void deleteTask({required Task task}) {
+    _tasks.remove(task);
+    notifyListeners();
+  }
+
   void toggleTaskState({required Task task}) {
     task.toggleDone();
     notifyListeners();
